@@ -20,14 +20,21 @@
   },
   "homepage": "https://github.com/taylorhakes/localstorage-lock#readme",
   "devDependencies": {
+    "babel-core": "^6.26.3",
     "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "cross-env": "^5.1.1",
     "mock-local-storage": "^1.0.5",
     "npm-run-all": "^4.1.2",
+    "painless": "^0.9.7",
     "prettier": "^1.8.2",
     "rollup": "^0.52.0",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-uglify": "^2.0.1"
+  },
+  "dependencies": {
+    "core-js": "^3.1.4",
+    "regenerator-runtime": "^0.13.2"
   }
 }

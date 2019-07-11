@@ -1,3 +1,6 @@
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
 function getId() {
   return `${Date.now()}:${Math.random()}`
 }
@@ -22,7 +25,7 @@ export function runWithLock(key, fn, { timeout=1000, lockWriteTime=50, checkTime
   localStorage.setItem(key, JSON.stringify({id, time: Date.now()}));
 
   // Delay a bit, to see if another worker is in this section
-  setTimeout(() => {
+  setTimeout(async () => {
     const currentResult = localStorage.getItem(key);
     const data = JSON.parse(currentResult);
     if (data.id !== id) {
@@ -33,7 +36,7 @@ export function runWithLock(key, fn, { timeout=1000, lockWriteTime=50, checkTime
     }
 
     try {
-      fn();
+      await fn();
     } finally {
       localStorage.removeItem(key);
     }
